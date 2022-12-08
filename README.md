@@ -19,7 +19,7 @@ $ npm i
 Migrate database: (check .env file to set db params)
 ```
 $ npm run prisma:migrate:dev
-$ npm run prisma:prisma:generate
+$ npm run prisma:generate
 ```
 
 Start with serverless offline plugin to start the lambdas localy:
