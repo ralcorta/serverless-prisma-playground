@@ -1,0 +1,10 @@
+# package directories
+node_modules
+jspm_packages
+lib
+docker
+package-lock.json
+
+# Serverless directories
+.serverless
+.build
