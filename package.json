@@ -1,12 +1,14 @@
 {
   "name": "serverless-ecommerce",
   "version": "1.0.0",
-  "description": "",
-  "type": "module",
-  "main": "index.js",
+  "description": "Bolerplait for AWS Lambda with Typescript and Prisma ORM",
+  "main": "serverless.ts",
+  "engines": {
+    "node": ">=16.15.0"
+  },
   "scripts": {
     "dev": "npm run docker:up && npm run local",
-    "local": "serverless offline",
+    "local": "serverless offline start",
     "package": "serverless package",
     "deploy": "serverless deploy",
     "test": "cross-env NODE_ENV=dev mocha -r ts-node/register tests/*.test.ts --exit",
@@ -14,25 +16,32 @@
     "doctor": "serverless doctor",
     "docker:up": "docker compose up -d",
     "docker:down": "docker compose down -v",
-    "prisma:introspect": "prisma introspect",
-    "prisma:generate": "prisma generate --schema=./src/prisma/schema.prisma",
-    "prisma:migrate:dev": "npx prisma migrate dev --schema=./src/prisma/schema.prisma --name",
-    "prisma:migrate:reset": "npx prisma migrate reset --schema=./src/prisma/schema.prisma"
+    "prisma:introspect": "prisma introspect --schema=./src/framework/prisma/schema.prisma",
+    "prisma:generate": "prisma generate --schema=./src/framework/prisma/schema.prisma",
+    "prisma:migrate:dev": "npx prisma migrate dev --schema=./src/framework/prisma/schema.prisma",
+    "prisma:migrate:reset": "npx prisma migrate reset --schema=./src/framework/prisma/schema.prisma"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/aws-lambda": "^8.10.109",
+    "@serverless/typescript": "^3.27.0",
+    "@types/aws-lambda": "^8.10.110",
+    "@types/http-errors": "^2.0.1",
     "@types/node": "^18.11.11",
+    "esbuild": "^0.16.17",
     "nyc": "^15.1.0",
-    "prisma": "^4.7.1",
+    "prettier": "2.8.3",
+    "prisma": "^4.9.0",
     "serverless": "^3.25.1",
     "serverless-dotenv-plugin": "^4.0.2",
+    "serverless-esbuild": "^1.37.3",
     "serverless-offline": "^12.0.1",
-    "serverless-plugin-typescript": "^2.1.4",
+    "serverless-webpack": "^5.11.0",
+    "serverless-webpack-prisma": "^1.1.2",
     "ts-node": "^10.9.1",
-    "typescript": "^4.9.4"
+    "tsconfig-paths": "^4.1.2",
+    "typescript": "^4.9.5"
   },
   "dependencies": {
     "@middy/core": "^4.0.2",
@@ -45,6 +54,10 @@
     "@middy/http-security-headers": "^4.0.2",
     "@middy/http-urlencode-body-parser": "^4.0.2",
     "@middy/http-urlencode-path-parser": "^4.0.2",
-    "@prisma/client": "^4.7.1"
+    "@prisma/client": "^4.9.0",
+    "http-errors": "^2.0.0",
+    "middy-middleware-json-error-handler": "^3.0.0",
+    "reflect-metadata": "^0.1.13",
+    "tsyringe": "^4.7.0"
   }
 }

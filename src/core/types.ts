@@ -13,7 +13,3 @@ export type APIGatewayProxyHandlerParsed = Handler<
   APIGatewayProxyEventParsed,
   APIGatewayProxyResult
 >;
-
-export type Controller<T> = {
-  [K in keyof T]: APIGatewayProxyHandlerParsed;
-};

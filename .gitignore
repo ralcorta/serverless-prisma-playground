@@ -8,3 +8,4 @@ package-lock.json
 # Serverless directories
 .serverless
 .build
+.esbuild
