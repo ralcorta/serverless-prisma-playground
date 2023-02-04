@@ -1,8 +1,6 @@
 import type { AWS } from '@serverless/typescript';
 import * as lambdas from './src/lambda';
 
-console.log(lambdas);
-
 const serverlessConfiguration: AWS = {
 	service: 'serverless-playground',
 	frameworkVersion: '3',
@@ -47,28 +45,6 @@ const serverlessConfiguration: AWS = {
 	},
 	functions: {
 		...lambdas
-		// listProduct: {
-		// 	handler: 'src/lambda/product-list.handler',
-		// 	events: [
-		// 		{
-		// 			http: {
-		// 				path: '/product',
-		// 				method: 'get'
-		// 			}
-		// 		}
-		// 	]
-		// },
-		// createProduct: {
-		// 	handler: 'src/lambda/product-create.handler',
-		// 	events: [
-		// 		{
-		// 			http: {
-		// 				path: '/product',
-		// 				method: 'post'
-		// 			}
-		// 		}
-		// 	]
-		// }
 	}
 };
 
