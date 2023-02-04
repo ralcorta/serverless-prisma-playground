@@ -2,7 +2,7 @@ import type { AWS } from '@serverless/typescript';
 import * as lambdas from './src/lambda';
 
 const serverlessConfiguration: AWS = {
-	service: 'serverless-playground',
+	service: 'serverless-boilerplate',
 	frameworkVersion: '3',
 	provider: {
 		name: 'aws',
