@@ -18,6 +18,10 @@ There are some important depenencies that we need to have in mind. The most impo
 
 -   [Docker Compose](https://docs.docker.com/compose/): For containers, like postgres database
 
+#### Linter
+
+For linting we are using Prettier. You can customize this editing the `.pretierrc.json` file
+
 ## Usage
 
 ### Development
