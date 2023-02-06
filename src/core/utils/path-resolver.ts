@@ -1,4 +1,4 @@
-export const pathExtensionless = (filePath: string) => {
+export const lambdaPath = (filePath: string) => {
 	return handlerPath(filePath).split('.').slice(0, -1).join('.');
 };
 

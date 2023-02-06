@@ -1,21 +1,21 @@
+import { ProductService } from './product-service';
 import { inject, singleton } from 'tsyringe';
 import { APIGatewayProxyEventParsed } from '../core/types';
-import { PrismaClient, Product } from '@prisma/client';
+import { Product } from '@prisma/client';
 
 @singleton()
 export class ProductController {
-	constructor(@inject(PrismaClient) private prisma: PrismaClient) {}
+	constructor(@inject(ProductService) private productService: ProductService) {}
 
-	async create(event: APIGatewayProxyEventParsed) {
-		return await this.prisma.product.create({
-			data: {
-				title: event.body.title,
-				content: event.body.content
-			}
-		});
+	async create(event: APIGatewayProxyEventParsed<Record<string, any>>) {
+		return this.productService.create(event.body.title, event.body.contnet);
 	}
 
 	async list(): Promise<Product[]> {
-		return this.prisma.product.findMany();
+		return this.productService.list();
+	}
+
+	async delete(event: APIGatewayProxyEventParsed<Record<string, any>>) {
+		this.productService.delete(event.body.id);
 	}
 }

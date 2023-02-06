@@ -44,6 +44,6 @@ export class Response {
 	}
 
 	static serverError(message?: string): Error {
-		return Response.createError(HttpStatusCode.SERVER_ERROR, message ?? 'Server error.');
+		return Response.createError(HttpStatusCode.INTERNAL_SERVER_ERROR, message ?? 'Server error.');
 	}
 }

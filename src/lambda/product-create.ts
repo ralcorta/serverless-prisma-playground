@@ -4,16 +4,17 @@ import { APIGatewayProxyEventParsed } from '../core/types';
 import { Handler } from 'aws-lambda';
 import { ProductController } from '../product/product-controller';
 import { diContainer } from '@framework/di';
-import { pathExtensionless } from 'src/core/utils/path-resolver';
+import { lambdaPath } from 'src/core/utils/path-resolver';
+import { HTTPMethod } from 'src/core/enums';
 
 export const hanhdler: Handler = middyfy(async (event: APIGatewayProxyEventParsed) => diContainer.resolve(ProductController).create(event));
 
 export const productCreate = {
-	handler: `${pathExtensionless(__filename)}.handler`,
+	handler: `${lambdaPath(__filename)}.handler`,
 	events: [
 		{
 			http: {
-				method: 'GET',
+				method: HTTPMethod.POST,
 				path: '/product'
 			}
 		}
